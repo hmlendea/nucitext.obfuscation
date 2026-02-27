@@ -217,7 +217,7 @@ namespace NuciText.Obfuscation
                 }
             }
 
-            StringBuilder builder = new StringBuilder(input.Length);
+            StringBuilder builder = new(input.Length);
 
             foreach (char character in input)
             {
@@ -258,6 +258,9 @@ namespace NuciText.Obfuscation
         }
 
         public string Obfuscate(string text)
+            => Obfuscate(text, new NuciTextObfuscatorOptions());
+
+        public string Obfuscate(string text, NuciTextObfuscatorOptions options)
         {
             if (text is null)
             {
@@ -268,6 +271,8 @@ namespace NuciText.Obfuscation
             {
                 return string.Empty;
             }
+
+            options ??= new NuciTextObfuscatorOptions();
 
             string input = text;
 
@@ -287,20 +292,23 @@ namespace NuciText.Obfuscation
                 input = input.Replace(group, replacement);
             }
 
-            foreach (KeyValuePair<string, string> entry in ApproximateGroupReplacements)
+            if (options.UseApproximateReplacements)
             {
-                string group = entry.Key;
-                string candidates = entry.Value;
-
-                string replacement = group;
-
-                if (RandomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
+                foreach (KeyValuePair<string, string> entry in ApproximateGroupReplacements)
                 {
-                    int index = RandomGenerator.Next(candidates.Length);
-                    replacement = candidates[index].ToString();
-                }
+                    string group = entry.Key;
+                    string candidates = entry.Value;
 
-                input = input.Replace(group, replacement);
+                    string replacement = group;
+
+                    if (RandomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
+                    {
+                        int index = RandomGenerator.Next(candidates.Length);
+                        replacement = candidates[index].ToString();
+                    }
+
+                    input = input.Replace(group, replacement);
+                }
             }
 
             StringBuilder builder = new(input.Length);
@@ -316,9 +324,12 @@ namespace NuciText.Obfuscation
                     candidatesBuilder.Append(IdenticalReplacements[character]);
                 }
 
-                if (ApproximateReplacements.ContainsKey(character))
+                if (options.UseApproximateReplacements)
                 {
-                    candidatesBuilder.Append(ApproximateReplacements[character]);
+                    if (ApproximateReplacements.ContainsKey(character))
+                    {
+                        candidatesBuilder.Append(ApproximateReplacements[character]);
+                    }
                 }
 
                 string candidates = candidatesBuilder.ToString();
