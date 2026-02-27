@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>NuciText.Obfuscation</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>NuciText Obfuscation</Description>
+    <Authors>Horațiu Mlendea</Authors>
+    <Copyright>Copyright 2026 © Horațiu Mlendea</Copyright>
+    <RepositoryUrl>https://github.com/hmlendea/nucitext.obfuscation</RepositoryUrl>
+    <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+    <PackageTags>Text Obfuscation</PackageTags>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+</Project>
