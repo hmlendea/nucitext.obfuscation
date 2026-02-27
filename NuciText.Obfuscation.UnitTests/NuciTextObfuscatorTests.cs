@@ -7,6 +7,10 @@ namespace NuciText.Obfuscation.UnitTests
         static int TestSeed => 123456789;
         static string TestPlainString => "Test string!";
         static string TestObfuscatedString => "ꓔеst strіng!";
+        static NuciTextObfuscatorOptions TestObfuscatorOptions => new()
+        {
+            UseApproximateReplacements = true
+        };
 
         INuciTextObfuscator obfuscator;
 
@@ -22,7 +26,7 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         public void GivenAnEmptyString_WhenObfuscating_ThenTheResultIsEmpty()
-            => Assert.That(obfuscator.Obfuscate(string.Empty), Is.Empty);
+            => Assert.That(obfuscator.Obfuscate(string.Empty, TestObfuscatorOptions), Is.Empty);
 
         [Test]
         public void GivenANullString_WhenDeobfuscating_ThenTheResultIsNull()
@@ -30,7 +34,7 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         public void GivenANullString_WhenObfuscating_ThenTheResultIsNull()
-            => Assert.That(obfuscator.Obfuscate(null), Is.Null);
+            => Assert.That(obfuscator.Obfuscate(null, TestObfuscatorOptions), Is.Null);
 
         [Test]
         public void GivenAValidString_WhenDeobfuscating_ThenTheResultIsNotNull()
@@ -38,7 +42,7 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         public void GivenAValidString_WhenObfuscating_ThenTheResultIsNotNull()
-            => Assert.That(obfuscator.Obfuscate(TestPlainString), Is.Not.Null);
+            => Assert.That(obfuscator.Obfuscate(TestPlainString, TestObfuscatorOptions), Is.Not.Null);
 
         [Test]
         public void GivenAValidString_WhenDeobfuscating_ThenTheResultIsNotEmpty()
@@ -46,7 +50,7 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         public void GivenAValidString_WhenObfuscating_ThenTheResultIsNotEmpty()
-            => Assert.That(obfuscator.Obfuscate(TestPlainString), Is.Not.Empty);
+            => Assert.That(obfuscator.Obfuscate(TestPlainString, TestObfuscatorOptions), Is.Not.Empty);
 
         [Test]
         public void GivenAValidString_WhenDeobfuscating_ThenTheResultHasBeenDeobfuscated()
@@ -54,6 +58,6 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         public void GivenAValidString_WhenObfuscating_ThenTheResultHasBeenObfuscated()
-            => Assert.That(obfuscator.Obfuscate(TestPlainString), Is.EqualTo(TestObfuscatedString));
+            => Assert.That(obfuscator.Obfuscate(TestPlainString, TestObfuscatorOptions), Is.EqualTo(TestObfuscatedString));
     }
 }
