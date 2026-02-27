@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace NuciText.Obfuscation
@@ -174,6 +172,88 @@ namespace NuciText.Obfuscation
         public NuciTextObfuscator(string seed) : this(seed.GetHashCode()) { }
 
         public NuciTextObfuscator() : this(Environment.TickCount) { }
+
+        public string Deobfuscate(string text)
+        {
+            if (text is null)
+            {
+                return null;
+            }
+
+            if (text.Equals(string.Empty))
+            {
+                return string.Empty;
+            }
+
+            string input = text;
+
+            foreach (KeyValuePair<string, string> entry in IdenticalGroupReplacements)
+            {
+                string originalGroup = entry.Key;
+                string candidates = entry.Value;
+
+                if (!string.IsNullOrEmpty(candidates))
+                {
+                    foreach (char candidate in candidates)
+                    {
+                        input = input.Replace(candidate.ToString(), originalGroup);
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<string, string> entry in ApproximateGroupReplacements)
+            {
+                string originalGroup = entry.Key;
+                string candidates = entry.Value;
+
+                if (!string.IsNullOrEmpty(candidates))
+                {
+                    foreach (char candidate in candidates)
+                    {
+                        input = input.Replace(candidate.ToString(), originalGroup);
+                    }
+                }
+            }
+
+            StringBuilder builder = new StringBuilder(input.Length);
+
+            foreach (char character in input)
+            {
+                bool wasReplaced = false;
+
+                foreach (KeyValuePair<char, string> entry in IdenticalReplacements)
+                {
+                    if (!string.IsNullOrEmpty(entry.Value) && entry.Value.Contains(character))
+                    {
+                        builder.Append(entry.Key);
+                        wasReplaced = true;
+                        break;
+                    }
+                }
+
+                if (wasReplaced)
+                {
+                    continue;
+                }
+
+                foreach (KeyValuePair<char, string> entry in ApproximateReplacements)
+                {
+                    if (!string.IsNullOrEmpty(entry.Value) && entry.Value.Contains(character))
+                    {
+                        builder.Append(entry.Key);
+                        wasReplaced = true;
+                        break;
+                    }
+                }
+
+                if (!wasReplaced)
+                {
+                    builder.Append(character);
+                }
+            }
+
+            return builder.ToString();
+        }
 
         public string Obfuscate(string text)
         {
