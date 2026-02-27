@@ -175,6 +175,11 @@ namespace NuciText.Obfuscation
 
         public NuciTextObfuscator() : this(Environment.TickCount) { }
 
+        /// <summary>
+        /// Deobfuscates the specified text.
+        /// </summary>
+        /// <param name="text">The text to deobfuscate.</param>
+        /// <returns>The deobfuscated text.</returns>
         public string Deobfuscate(string text)
         {
             if (text is null)
@@ -257,9 +262,20 @@ namespace NuciText.Obfuscation
             return builder.ToString();
         }
 
+        /// <summary>
+        /// Obfuscates the specified text.
+        /// </summary>
+        /// <param name="text">The text to obfuscate.</param>
+        /// <returns>The obfuscated text.</returns>
         public string Obfuscate(string text)
             => Obfuscate(text, new NuciTextObfuscatorOptions());
 
+        /// <summary>
+        /// Obfuscates the specified text using the provided options.
+        /// </summary>
+        /// <param name="text">The text to obfuscate.</param>
+        /// <param name="options">The options to use for obfuscation.</param>
+        /// <returns>The obfuscated text.</returns>
         public string Obfuscate(string text, NuciTextObfuscatorOptions options)
         {
             if (text is null)
