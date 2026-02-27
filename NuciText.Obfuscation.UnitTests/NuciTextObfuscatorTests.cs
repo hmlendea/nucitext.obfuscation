@@ -1,3 +1,5 @@
+using NUnit.Framework;
+
 namespace NuciText.Obfuscation.UnitTests
 {
     public class NuciTextObfuscatorTests
