@@ -6,7 +6,7 @@ namespace NuciText.Obfuscation.UnitTests
     {
         static int TestSeed => 123456789;
         static string TestPlainString => "Test string!";
-        static string TestObfuscatedString => "ꓔеst strіng!";
+        static string TestObfuscatedString => "Ꭲеst strіng!";
         static NuciTextObfuscatorOptions TestObfuscatorOptions => new()
         {
             UseApproximateReplacements = true
@@ -59,5 +59,12 @@ namespace NuciText.Obfuscation.UnitTests
         [Test]
         public void GivenAValidString_WhenObfuscating_ThenTheResultHasBeenObfuscated()
             => Assert.That(obfuscator.Obfuscate(TestPlainString, TestObfuscatorOptions), Is.EqualTo(TestObfuscatedString));
+
+        [Test]
+        [TestCase("ciocolatǎ albă", "ciocolată albă")]
+        public void GivenAnObfuscatedString_WhenDeobfuscating_ThenTheResultIsTheDeobfuscatedString(
+            string obfuscatedString,
+            string deobfuscatedString)
+            => Assert.That(obfuscator.Deobfuscate(obfuscatedString), Is.EqualTo(deobfuscatedString));
     }
 }
