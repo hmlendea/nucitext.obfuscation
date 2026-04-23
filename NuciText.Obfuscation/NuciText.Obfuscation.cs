@@ -78,16 +78,13 @@ namespace NuciText.Obfuscation
             { '\'', "′´ʹ‘’" },
             { '\"', "”″" },
             { '|', "ǀ" },
-            { 'ǀ', "|" },
             { '/', "⁄⧸" },
             { '\\', "⧵⧹" },
             { '-', "‐–" },
             { '+', "𖫵" },
             { '<', "ᐸ𖫬ⵦ" },
             { '>', "ᐳ" },
-            { '3', "З" },
-            { 'Ʒ', "Ӡ" },
-            { 'Ӡ', "Ʒ" },
+            { '3', "ƷЗӠ" },
 
             { 'Æ', "Ӕ" },
             { 'æ', "ӕ" },
@@ -176,8 +173,7 @@ namespace NuciText.Obfuscation
             { '\'', "ʹ" },
 
             //"0": "߀", // This can turn the text left-to-right
-            { '3', "Ӡ" }, // The following look too different: Ʒ
-            { 'Ӡ', "3З" },
+            { '3', "ӠЗ" }, // The following look too different: Ʒ
             { '5', "Ƽ" },
             { '6', "бᏮ" },
 
@@ -219,9 +215,7 @@ namespace NuciText.Obfuscation
             { 'g', "ɡց" },
             //{ 'h', "հ" }, // "հ" looks like some arabic letter on iOS
             { 'h', "ᏂႹ" }, // "һ", // Confirmed to look quite different in many fonts
-            { 'i', "Ꭵⅰ" }, // This might be a bit of a stretch
-            { 'ı', "ɪ" },
-            { 'ɪ', "ı" },
+            { 'i', "Ꭵⅰıɪ" }, // This might be a bit of a stretch
             { 'ĭ', "ǐ" },
             { 'j', "ϳ" },
             { 'k', "κкκꮶ" },
