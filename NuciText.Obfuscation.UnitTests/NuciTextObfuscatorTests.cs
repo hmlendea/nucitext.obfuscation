@@ -62,6 +62,9 @@ namespace NuciText.Obfuscation.UnitTests
 
         [Test]
         [TestCase("ciocolatǎ albă", "ciocolată albă")]
+        [TestCase(
+            "Soldul total al boților de Profi Bot Server (Hori) a fost măsurat la 573.29 RON",
+            "Soldul total al boţilor de Profi Bot Server (Hori) a fost măsurat la 573.29 RON")]
         public void GivenAnObfuscatedString_WhenDeobfuscating_ThenTheResultIsTheDeobfuscatedString(
             string obfuscatedString,
             string deobfuscatedString)
