@@ -16,6 +16,7 @@ This document covers the guidelines and processes for contributing to this proje
   - [Testing](#testing)
   - [Documentation](#documentation)
 - [Code of Conduct](#code-of-conduct)
+- [Security](#security)
 - [License](#license)
 - [Getting Assistance](#getting-assistance)
 
@@ -98,6 +99,10 @@ dotnet test NuciText.Obfuscation.UnitTests/NuciText.Obfuscation.UnitTests.csproj
 ## 📋 Code of Conduct
 
 This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
+
+## 🔒 Security
+
+Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 📄 License
 
