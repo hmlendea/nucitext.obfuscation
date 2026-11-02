@@ -1,40 +1,21 @@
-[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding) [![Latest GitHub release](https://img.shields.io/github/v/release/hmlendea/nucitext.obfuscation)](https://github.com/hmlendea/nucitext.obfuscation/releases/latest) [![Build Status](https://github.com/hmlendea/nucitext.obfuscation/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucitext.obfuscation/actions/workflows/dotnet.yml) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://gnu.org/licenses/gpl-3.0)
+[![Donate](https://img.shields.io/badge/-%E2%99%A5%20Donate-%23ff69b4)](https://hmlendea.go.ro/funding)
+[![Latest Release](https://img.shields.io/github/v/release/hmlendea/nucitext.obfuscation)](https://github.com/hmlendea/nucitext.obfuscation/releases/latest)
+[![Build Status](https://github.com/hmlendea/nucitext.obfuscation/actions/workflows/dotnet.yml/badge.svg)](https://github.com/hmlendea/nucitext.obfuscation/actions/workflows/dotnet.yml)
+[![NuGet](https://img.shields.io/nuget/v/NuciText.Obfuscation)](https://nuget.org/packages/NuciText.Obfuscation)
+[![License](https://img.shields.io/github/license/hmlendea/nucitext.obfuscation)](https://github.com/hmlendea/nucitext.obfuscation/blob/main/LICENSE)
 
 # NuciText.Obfuscation
 
 NuciText.Obfuscation is a lightweight .NET library for text obfuscation using visually similar Unicode characters.
 
-It can:
+## ✨ Capabilities
+
 - Obfuscate readable text while preserving visual similarity
 - Reverse known substitutions through deobfuscation
 - Produce deterministic results with a fixed seed
 - Optionally include approximate replacements for stronger obfuscation
 
-## Features
-
-- Randomized obfuscation based on configurable seed
-- Support for both single-character and grouped replacements
-- Optional approximate substitutions via options
-- Null-safe and empty-string-safe API behavior
-- Simple API surface (`Obfuscate` / `Deobfuscate`)
-
-## Installation
-
-[![Get it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/NuciText.Obfuscation)
-
-### .NET CLI
-
-```bash
-dotnet add package NuciText.Obfuscation
-```
-
-### NuGet Package Manager
-
-```powershell
-Install-Package NuciText.Obfuscation
-```
-
-## Quick Start
+## 🚀 Usage
 
 ```csharp
 using NuciText.Obfuscation;
@@ -46,7 +27,7 @@ string obfuscated = obfuscator.Obfuscate(input);
 string restored = obfuscator.Deobfuscate(obfuscated);
 ```
 
-## Deterministic Output
+### Deterministic Output
 
 If you need reproducible output (for tests or snapshots), use a fixed seed.
 
@@ -55,7 +36,7 @@ using NuciText.Obfuscation;
 
 var options = new NuciTextObfuscatorOptions
 {
-	UseApproximateReplacements = true
+    UseApproximateReplacements = true
 };
 
 INuciTextObfuscator obfuscator = new NuciTextObfuscator(123456789);
@@ -68,49 +49,31 @@ string restored = obfuscator.Deobfuscate(obfuscated);
 // restored == "Test string!"
 ```
 
-## API
+## 📦 Installation
 
-`INuciTextObfuscator`
-- `string Obfuscate(string text)`
-- `string Obfuscate(string text, NuciTextObfuscatorOptions options)`
-- `string Deobfuscate(string text)`
+[![Obtain it from NuGet](https://raw.githubusercontent.com/hmlendea/readme-assets/master/badges/stores/nuget.png)](https://nuget.org/packages/NuciText.Obfuscation)
 
-`NuciTextObfuscator` constructors
-- `NuciTextObfuscator()`
-- `NuciTextObfuscator(int seed)`
-- `NuciTextObfuscator(string seed)`
+### Package Manager Installation
 
-`NuciTextObfuscatorOptions`
-- `bool UseApproximateReplacements` (default: `false`)
+```bash
+dotnet add package NuciText.Obfuscation
+```
 
-## Behavior Notes
+Or, via the `Package Manager Console`:
+```powershell
+Install-Package NuciText.Obfuscation
+```
 
-- Passing `null` returns `null`.
-- Passing an empty string returns an empty string.
-- Obfuscation is probabilistic by default.
-- Deobfuscation restores known substitutions from the internal mapping tables.
-
-## Development
+## 🏗️ Development
 
 ### Prerequisites
 
-- .NET SDK compatible with the target framework
-
-## Project Structure
-
-- `NuciText.Obfuscation/` - main library
-- `NuciText.Obfuscation.UnitTests/` - NUnit test project
+- .NET SDK compatible with the target framework (net10.0)
 
 ### Build
 
 ```bash
-dotnet build NuciText.Obfuscation.csproj
-```
-
-### Run
-
-```bash
-dotnet run --project NuciText.Obfuscation.csproj
+dotnet build
 ```
 
 ### Test
@@ -121,33 +84,28 @@ dotnet test
 
 ## 🤝 Contributing
 
-You are welcome to submit any suggestion, feedback, or modification to this project.
-
-When doing so, please:
-- Maintain cross-platform compatibility
-- Preserve the existing public contract unless a breaking change is intentional
-- Submit focused pull requests that conform to the existing code style
-- Maintain your branch synchronised with `master`
-- Revise the documentation when functionality changes
-- Properly test all modifications, including edge cases and error conditions
-- Include tests for additional or modified functionality
-- Raise a new [issue](https://github.com/hmlendea/nucitext.obfuscation/issues) for problems or suggestions
-
 See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 ## 📜 Code of Conduct
 
-See the [Code of Conduct](./CODE_OF_CONDUCT.md) for the standards of conduct expected in all project spaces.
-
-## 🛡️ Privacy and Data
-
-NuciText.Obfuscation is a pure .NET text-transformation library with no network access, telemetry, or data collection. The library performs in-memory obfuscation and deobfuscation only. See [PRIVACY.md](./PRIVACY.md) for the complete data-handling description.
+This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ## 🔒 Security
 
-NuciText.Obfuscation follows a coordinated disclosure policy. For information on reporting security vulnerabilities, see [SECURITY.md](./SECURITY.md).
+Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
-## License
+## 🛡️ Privacy
 
-Licensed under the GNU General Public License v3.0 or later.
-See [LICENSE](./LICENSE) for details.
+See [PRIVACY.md](./PRIVACY.md) for the complete data-handling description.
+
+## 🏛️ Architecture
+
+See [ARCHITECTURE.md](./ARCHITECTURE.md) for the system architecture.
+
+## 🗺️ Roadmap
+
+See [ROADMAP.md](./ROADMAP.md) for planned work.
+
+## 📄 License
+
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0 or later](./LICENSE).

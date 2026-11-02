@@ -58,13 +58,14 @@ dotnet restore
 2. Create a feature branch: `git checkout -b feature/your-feature-name`
 3. Make your changes.
 4. Run tests: `dotnet test`
-5. Commit with clear and descriptive messages.
-6. Push to your fork.
-7. Open a Pull Request.
+5. Run linters: `dotnet build`
+6. Commit with clear and descriptive messages.
+7. Push to your fork.
+8. Open a Pull Request.
 
 #### Pull Request Guidelines
 
-- Target the `master` branch.
+- Target the `main` branch.
 - Keep PRs focused and atomic.
 - Revise documentation if applicable.
 - Include tests for any new functionality.
@@ -106,7 +107,7 @@ Report security vulnerabilities per the [Security Policy](./SECURITY.md).
 
 ## 📄 License
 
-By contributing, you agree that your contributions will be licensed under the GNU General Public License v3.0 or later.
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0 or later](./LICENSE).
 
 ## ❓ Getting Assistance
 
