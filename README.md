@@ -119,17 +119,21 @@ dotnet run --project NuciText.Obfuscation.csproj
 dotnet test
 ```
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome.
+You are welcome to submit any suggestion, feedback, or modification to this project.
 
-When contributing:
+When doing so, please:
+- Maintain cross-platform compatibility
+- Preserve the existing public contract unless a breaking change is intentional
+- Submit focused pull requests that conform to the existing code style
+- Maintain your branch synchronised with `master`
+- Revise the documentation when functionality changes
+- Properly test all modifications, including edge cases and error conditions
+- Include tests for additional or modified functionality
+- Raise a new [issue](https://github.com/hmlendea/nucitext.obfuscation/issues) for problems or suggestions
 
-- keep the project cross-platform
-- preserve the existing public API unless a breaking change is intentional
-- keep the changes focused and consistent with the the current coding style
-- update the documentation when behavior changes
-- include tests for any new behavior
+See the [contributing guidelines](./CONTRIBUTING.md) for details on how to report issues, suggest enhancements, and submit changes.
 
 ## 🛡️ Privacy and Data
 
