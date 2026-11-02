@@ -131,6 +131,10 @@ When contributing:
 - update the documentation when behavior changes
 - include tests for any new behavior
 
+## 🛡️ Privacy and Data
+
+NuciText.Obfuscation is a pure .NET text-transformation library with no network access, telemetry, or data collection. The library performs in-memory obfuscation and deobfuscation only. See [PRIVACY.md](./PRIVACY.md) for the complete data-handling description.
+
 ## License
 
 Licensed under the GNU General Public License v3.0 or later.
