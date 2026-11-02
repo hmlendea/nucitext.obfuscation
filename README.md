@@ -102,10 +102,6 @@ See [PRIVACY.md](./PRIVACY.md) for the complete data-handling description.
 
 See [ARCHITECTURE.md](./ARCHITECTURE.md) for the system architecture.
 
-## 🗺️ Roadmap
-
-See [ROADMAP.md](./ROADMAP.md) for planned work.
-
 ## 📄 License
 
 By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0 or later](./LICENSE).

@@ -65,7 +65,7 @@ dotnet restore
 
 #### Pull Request Guidelines
 
-- Target the `main` branch.
+- Target the `master` branch.
 - Keep PRs focused and atomic.
 - Revise documentation if applicable.
 - Include tests for any new functionality.
