@@ -6,7 +6,7 @@ namespace NuciText.Obfuscation
 {
     public sealed class NuciTextObfuscator(int seed) : INuciTextObfuscator
     {
-        private readonly Random RandomGenerator = new(seed);
+        private readonly Random randomGenerator = new(seed);
 
         private static readonly Dictionary<string, string> IdenticalGroupReplacements = new()
         {
@@ -76,7 +76,7 @@ namespace NuciText.Obfuscation
             { ':', "։꞉" },
             { ';', ";" },
             { '\'', "′´ʹ‘’" },
-            { '\"', "”″" },
+            { '"', "”″" },
             { '|', "ǀ" },
             { '/', "⁄⧸" },
             { '\\', "⧵⧹" },
@@ -235,9 +235,13 @@ namespace NuciText.Obfuscation
             { 'y', "γʏ" }
         };
 
-        public NuciTextObfuscator(string seed) : this(seed.GetHashCode()) { }
+        public NuciTextObfuscator(string seed) : this(seed.GetHashCode())
+        {
+        }
 
-        public NuciTextObfuscator() : this(Environment.TickCount) { }
+        public NuciTextObfuscator() : this(Environment.TickCount)
+        {
+        }
 
         /// <summary>
         /// Deobfuscates the specified text.
@@ -363,9 +367,9 @@ namespace NuciText.Obfuscation
 
                 string replacement = group;
 
-                if (RandomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
+                if (randomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
                 {
-                    int index = RandomGenerator.Next(candidates.Length);
+                    int index = randomGenerator.Next(candidates.Length);
                     replacement = candidates[index].ToString();
                 }
 
@@ -381,9 +385,9 @@ namespace NuciText.Obfuscation
 
                     string replacement = group;
 
-                    if (RandomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
+                    if (randomGenerator.Next(1, 11) <= 6 && candidates.Length > 0)
                     {
-                        int index = RandomGenerator.Next(candidates.Length);
+                        int index = randomGenerator.Next(candidates.Length);
                         replacement = candidates[index].ToString();
                     }
 
@@ -416,9 +420,9 @@ namespace NuciText.Obfuscation
 
                 if (!string.IsNullOrEmpty(candidates))
                 {
-                    if (RandomGenerator.Next(1, 11) <= 6)
+                    if (randomGenerator.Next(1, 11) <= 6)
                     {
-                        int index = RandomGenerator.Next(candidates.Length);
+                        int index = randomGenerator.Next(candidates.Length);
                         builder.Append(candidates[index]);
                         wasObfuscated = true;
                     }

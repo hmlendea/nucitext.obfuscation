@@ -2,17 +2,17 @@ using NUnit.Framework;
 
 namespace NuciText.Obfuscation.UnitTests
 {
-    public class NuciTextObfuscatorTests
+    public sealed class NuciTextObfuscatorTests
     {
-        static int TestSeed => 123456789;
-        static string TestPlainString => "Test string!";
-        static string TestObfuscatedString => "Ꭲеst strіng!";
-        static NuciTextObfuscatorOptions TestObfuscatorOptions => new()
+        private static int TestSeed => 123456789;
+        private static string TestPlainString => "Test string!";
+        private static string TestObfuscatedString => "Ꭲеst strіng!";
+        private static NuciTextObfuscatorOptions TestObfuscatorOptions => new()
         {
             UseApproximateReplacements = true
         };
 
-        INuciTextObfuscator obfuscator;
+        private INuciTextObfuscator obfuscator;
 
         [SetUp]
         public void Setup()
@@ -21,7 +21,7 @@ namespace NuciText.Obfuscation.UnitTests
         }
 
         [Test]
-        public void GivenAnEmptyString_WhenDebfuscating_ThenTheResultIsEmpty()
+        public void GivenAnEmptyString_WhenDeobfuscating_ThenTheResultIsEmpty()
             => Assert.That(obfuscator.Deobfuscate(string.Empty), Is.Empty);
 
         [Test]
