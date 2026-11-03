@@ -1,13 +1,5 @@
-using System.IO;
-using System.Linq;
 using System.Xml.Linq;
 using ReflectionAssembly = System.Reflection.Assembly;
-using ArchUnitNET.Domain;
-using ArchUnitNET.Fluent;
-using ArchUnitNET.Loader;
-using ArchUnitNET.NUnit;
-using NUnit.Framework;
-using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace NuciText.Obfuscation.ArchitectureTests
 {
@@ -74,6 +66,29 @@ namespace NuciText.Obfuscation.ArchitectureTests
                 .ToArray();
 
             Assert.That(testAssemblyNames, Is.Empty);
+        }
+
+        [Test]
+        public void GivenTheProductionAssembly_WhenCheckingItsClasses_ThenEveryPublicClassIsSealed()
+        {
+            IArchRule rule = Classes().That()
+                .ArePublic()
+                .And().ResideInAssembly(Architecture.Assemblies.Single())
+                .Should().BeSealed();
+
+            Architecture.CheckRule(rule);
+        }
+
+        [Test]
+        public void GivenTheProductionProject_WhenCheckingItsAssemblyAttributes_ThenItDoesNotDeclareInternalsVisibleTo()
+        {
+            string repositoryPath = Path.GetDirectoryName(GetProductionProjectPath())!;
+            string[] sourceFiles = Directory.GetFiles(repositoryPath, "*.cs", SearchOption.TopDirectoryOnly);
+            bool declaresInternalsVisibleTo = sourceFiles
+                .Select(File.ReadAllText)
+                .Any(source => source.Contains("InternalsVisibleTo"));
+
+            Assert.That(declaresInternalsVisibleTo, Is.False);
         }
 
         private static string GetProductionProjectPath()
