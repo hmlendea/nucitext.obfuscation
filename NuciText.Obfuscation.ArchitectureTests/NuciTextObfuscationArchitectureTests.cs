@@ -1,5 +1,14 @@
+using System;
+using System.IO;
+using System.Linq;
 using System.Xml.Linq;
+using ArchUnitNET.Domain;
+using ArchUnitNET.Fluent;
+using ArchUnitNET.Loader;
+using NUnit.Framework;
+using ArchUnitNET.NUnit;
 using ReflectionAssembly = System.Reflection.Assembly;
+using static ArchUnitNET.Fluent.ArchRuleDefinition;
 
 namespace NuciText.Obfuscation.ArchitectureTests
 {
