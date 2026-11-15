@@ -31,6 +31,31 @@ dotnet test
 - Runner: `ubuntu-latest`
 - .NET Version: `10.0.x`
 
+### Security Pipeline (GitHub Actions)
+
+**File:** `.github/workflows/security.yml`
+
+**Triggers:**
+- Push to `master`
+- Pull requests to `master`
+- Weekly schedule (`0 0 * * 0`)
+
+**Jobs:**
+1. **Security Scan** — Vulnerability audit and CodeQL analysis
+
+**Steps:**
+1. Checkout
+2. Setup .NET 10.0.x
+3. Restore dependencies
+4. Check for vulnerable packages: `dotnet list package --vulnerable --include-transitive`
+5. CodeQL init for `csharp`
+6. Build: `dotnet build --no-restore`
+7. CodeQL analyze (uploads SARIF to GitHub Code Scanning)
+
+**Permissions:**
+- `security-events: write` (required for the SARIF upload)
+- `contents: read`
+
 ### Release Pipeline (GitHub Actions)
 
 **File:** `.github/workflows/nuget-release.yml`

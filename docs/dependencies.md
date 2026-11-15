@@ -77,4 +77,4 @@ If dependencies are needed in the future:
 
 - No dependencies = minimal supply chain risk
 - No native code = no platform-specific vulnerabilities
-- Regular `dotnet list package --vulnerable` checks in CI (recommended)
+- Regular `dotnet list package --vulnerable` checks in CI (see `.github/workflows/security.yml`)
