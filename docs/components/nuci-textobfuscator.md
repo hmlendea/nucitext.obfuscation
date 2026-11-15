@@ -93,16 +93,16 @@ Input String
     ▼
 ┌─────────────────────────────────────┐
 │ 1. Group Replacements (Greedy)      │
-│    - IdenticalGroupReplacements     │
-│    - ApproximateGroupReplacements   │
+│    - identicalGroupReplacements     │
+│    - approximateGroupReplacements   │
 │    - Longest match wins             │
 └─────────────────────────────────────┘
     │
     ▼
 ┌─────────────────────────────────────┐
 │ 2. Single Character Replacements    │
-│    - IdenticalReplacements          │
-│    - ApproximateReplacements        │
+│    - identicalReplacements          │
+│    - approximateReplacements        │
 │    - 60% probability per character  │
 └─────────────────────────────────────┘
     │
@@ -141,10 +141,10 @@ private readonly Random _random;
 ### Static State
 
 ```csharp
-private static readonly Dictionary<string, string[]> IdenticalGroupReplacements;
-private static readonly Dictionary<string, string[]> ApproximateGroupReplacements;
-private static readonly Dictionary<string, string[]> IdenticalReplacements;
-private static readonly Dictionary<string, string[]> ApproximateReplacements;
+private static readonly Dictionary<string, string> identicalGroupReplacements;
+private static readonly Dictionary<string, string> approximateGroupReplacements;
+private static readonly Dictionary<string, string> identicalReplacements;
+private static readonly Dictionary<string, string> approximateReplacements;
 
 private static Dictionary<string, string>? _reverseMap;
 private static readonly object _reverseMapLock = new();
@@ -205,7 +205,7 @@ var o = new NuciTextObfuscator("user-session-123");
 | `dz` | `ǳʣ` |
 | ... | ... |
 
-### IdenticalReplacements
+### identicalReplacements
 
 `Dictionary<char, string>` — Single-character exact visual substitutions.
 
@@ -229,7 +229,7 @@ var o = new NuciTextObfuscator("user-session-123");
 | `B` | `ВΒꓐ` |
 | ... | ... |
 
-### ApproximateReplacements
+### approximateReplacements
 
 `Dictionary<char, string>` — Single-character approximate visual substitutions (enabled via options).
 
@@ -245,16 +245,16 @@ var o = new NuciTextObfuscator("user-session-123");
 
 ## Methods
 
-### Obfuscate(string text)
+### Obfuscate(string? text)
 
 ```csharp
-public string Obfuscate(string text)
+public string? Obfuscate(string? text)
     => Obfuscate(text, new NuciTextObfuscatorOptions());
 ```
 
 Delegates to overload with default options.
 
-### Obfuscate(string text, NuciTextObfuscatorOptions options)
+### Obfuscate(string? text, NuciTextObfuscatorOptions options)
 
 Transforms input text by:
 1. Null/empty check
@@ -264,7 +264,7 @@ Transforms input text by:
 
 **Probabilistic behaviour:** Each character/group has a 60% chance of being replaced when candidates exist.
 
-### Deobfuscate(string text)
+### Deobfuscate(string? text)
 
 Reverses obfuscation by:
 1. Null/empty check

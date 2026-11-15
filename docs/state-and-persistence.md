@@ -28,10 +28,10 @@ private readonly Random _random;  // Only mutable state
 ## Mapping Tables (Static Readonly)
 
 ```csharp
-private static readonly Dictionary<string, string[]> IdenticalGroupReplacements = ...;
-private static readonly Dictionary<string, string[]> ApproximateGroupReplacements = ...;
-private static readonly Dictionary<string, string[]> IdenticalReplacements = ...;
-private static readonly Dictionary<string, string[]> ApproximateReplacements = ...;
+private static readonly Dictionary<string, string> identicalGroupReplacements = ...;
+private static readonly Dictionary<string, string> approximateGroupReplacements = ...;
+private static readonly Dictionary<string, string> identicalReplacements = ...;
+private static readonly Dictionary<string, string> approximateReplacements = ...;
 ```
 
 - Initialized at type load time

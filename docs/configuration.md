@@ -7,7 +7,7 @@ The `NuciTextObfuscatorOptions` class controls obfuscation behaviour.
 ```csharp
 public class NuciTextObfuscatorOptions
 {
-    public bool UseApproximateReplacements { get; set; } = false;
+    public bool UseApproximateReplacements { get; set; }
 }
 ```
 
@@ -35,8 +35,8 @@ string result = obfuscator.Obfuscate("Input text", options);
 
 | Option Value | Tables Used |
 |--------------|-------------|
-| `false` (default) | `IdenticalGroupReplacements`, `IdenticalReplacements` |
-| `true` | All four tables (adds `ApproximateGroupReplacements`, `ApproximateReplacements`) |
+| `false` (default) | `identicalGroupReplacements`, `identicalReplacements` |
+| `true` | All four tables (adds `approximateGroupReplacements`, `approximateReplacements`) |
 
 ## Default Behaviour
 

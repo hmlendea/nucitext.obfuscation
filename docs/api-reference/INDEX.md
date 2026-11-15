@@ -15,15 +15,15 @@ NuciText.Obfuscation exposes a minimal public API with three types.
 ## Interface: INuciTextObfuscator
 
 **Namespace:** `NuciText.Obfuscation`
-**File:** `INuciText.Obfuscation.cs`
+**File:** `INuciTextObfuscator.cs`
 
 ### Methods
 
 | Method | Returns | Description |
 |--------|---------|-------------|
-| `Obfuscate(string text)` | `string` | Obfuscates text with default options |
-| `Obfuscate(string text, NuciTextObfuscatorOptions options)` | `string` | Obfuscates text with custom options |
-| `Deobfuscate(string text)` | `string` | Reverses obfuscation for known mappings |
+| `Obfuscate(string? text)` | `string?` | Obfuscates text with default options |
+| `Obfuscate(string? text, NuciTextObfuscatorOptions options)` | `string?` | Obfuscates text with custom options |
+| `Deobfuscate(string? text)` | `string?` | Reverses obfuscation for known mappings |
 
 ### Behaviour Summary
 
@@ -37,7 +37,7 @@ NuciText.Obfuscation exposes a minimal public API with three types.
 ## Class: NuciTextObfuscator
 
 **Namespace:** `NuciText.Obfuscation`
-**File:** `NuciText.Obfuscation.cs`
+**File:** `NuciTextObfuscator.cs`
 **Implements:** `INuciTextObfuscator`
 
 ### Constructors

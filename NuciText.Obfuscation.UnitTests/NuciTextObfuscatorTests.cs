@@ -2,23 +2,25 @@ using NUnit.Framework;
 
 namespace NuciText.Obfuscation.UnitTests
 {
+    [TestFixture]
     public sealed class NuciTextObfuscatorTests
     {
-        private static int TestSeed => 123456789;
-        private static string TestPlainString => "Test string!";
-        private static string TestObfuscatedString => "Ꭲеst strіng!";
-        private static NuciTextObfuscatorOptions TestObfuscatorOptions => new()
+        private static readonly int TestSeed = 123456789;
+
+        private static readonly string TestPlainString = "Test string!";
+
+        private static readonly string TestObfuscatedString = "Ꭲеst strіng!";
+
+        private static readonly NuciTextObfuscatorOptions TestObfuscatorOptions = new()
         {
             UseApproximateReplacements = true
         };
 
-        private INuciTextObfuscator obfuscator;
+        private INuciTextObfuscator obfuscator = null!;
 
         [SetUp]
-        public void Setup()
-        {
-            obfuscator = new NuciTextObfuscator(TestSeed);
-        }
+        public void SetUp()
+            => obfuscator = new NuciTextObfuscator(TestSeed);
 
         [Test]
         public void GivenAnEmptyString_WhenDeobfuscating_ThenTheResultIsEmpty()
@@ -68,6 +70,8 @@ namespace NuciText.Obfuscation.UnitTests
         public void GivenAnObfuscatedString_WhenDeobfuscating_ThenTheResultIsTheDeobfuscatedString(
             string obfuscatedString,
             string deobfuscatedString)
-            => Assert.That(obfuscator.Deobfuscate(obfuscatedString), Is.EqualTo(deobfuscatedString));
+            => Assert.That(
+                obfuscator.Deobfuscate(obfuscatedString),
+                Is.EqualTo(deobfuscatedString));
     }
 }

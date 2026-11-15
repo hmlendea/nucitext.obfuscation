@@ -8,6 +8,6 @@ namespace NuciText.Obfuscation
         /// <summary>
         /// Gets or sets a value indicating whether to use approximate replacements for characters.
         /// </summary>
-        public bool UseApproximateReplacements { get; set; } = false;
+        public bool UseApproximateReplacements { get; set; }
     }
 }

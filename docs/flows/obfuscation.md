@@ -7,7 +7,7 @@ End-to-end flow for the `Obfuscate` operation.
 ## Entry Point
 
 ```csharp
-public string Obfuscate(string text, NuciTextObfuscatorOptions options)
+public string? Obfuscate(string? text, NuciTextObfuscatorOptions options)
 ```
 
 ## Flow Diagram
@@ -19,7 +19,7 @@ flowchart TD
     NullCheck -->|No| EmptyCheck{text == ""?}
     EmptyCheck -->|Yes| ReturnEmpty[Return ""]
     EmptyCheck -->|No| InitOptions[options ??= new()]
-    InitOptions --> GroupLoop[For each IdenticalGroupReplacements]
+    InitOptions --> GroupLoop[For each identicalGroupReplacements]
     GroupLoop --> GroupProb{Random 1-10 <= 6?}
     GroupProb -->|Yes| GroupReplace[Replace with random candidate]
     GroupProb -->|No| GroupKeep[Keep original]
@@ -28,7 +28,7 @@ flowchart TD
     GroupNext --> MoreGroups{More groups?}
     MoreGroups -->|Yes| GroupLoop
     MoreGroups -->|No| ApproxCheck{options.UseApproximateReplacements?}
-    ApproxCheck -->|Yes| ApproxGroupLoop[For each ApproximateGroupReplacements]
+    ApproxCheck -->|Yes| ApproxGroupLoop[For each approximateGroupReplacements]
     ApproxCheck -->|No| CharLoop[For each character in text]
     ApproxGroupLoop --> ApproxGroupProb{Random 1-10 <= 6?}
     ApproxGroupProb -->|Yes| ApproxGroupReplace[Replace with random candidate]
@@ -38,10 +38,10 @@ flowchart TD
     ApproxGroupNext --> MoreApproxGroups{More groups?}
     MoreApproxGroups -->|Yes| ApproxGroupLoop
     MoreApproxGroups -->|No| CharLoop
-    CharLoop --> IdenticalCheck{Char in IdenticalReplacements?}
+    CharLoop --> IdenticalCheck{Char in identicalReplacements?}
     IdenticalCheck -->|Yes| IdenticalCandidates[Get candidates]
     IdenticalCheck -->|No| ApproxCheck2{Approximate enabled?}
-    ApproxCheck2 -->|Yes| ApproxCharCheck{Char in ApproximateReplacements?}
+    ApproxCheck2 -->|Yes| ApproxCharCheck{Char in approximateReplacements?}
     ApproxCheck2 -->|No| CharAppend[Append original char]
     ApproxCharCheck -->|Yes| ApproxCandidates[Get candidates]
     ApproxCharCheck -->|No| CharAppend
@@ -66,7 +66,7 @@ flowchart TD
 - Options null → instantiate default `NuciTextObfuscatorOptions`
 
 ### 2. Group Replacements (Identical)
-- Iterate `IdenticalGroupReplacements` dictionary
+- Iterate `identicalGroupReplacements` dictionary
 - For each group (e.g., `**`, `!!`, `...`):
   - 60% chance: replace with random candidate from value string
   - 40% chance: keep original group
@@ -74,15 +74,15 @@ flowchart TD
 
 ### 3. Group Replacements (Approximate) — Conditional
 - Only if `options.UseApproximateReplacements == true`
-- Iterate `ApproximateGroupReplacements` dictionary
+- Iterate `approximateGroupReplacements` dictionary
 - Same 60% probabilistic replacement logic
 - Uses `string.Replace` on current input string
 
 ### 4. Character-by-Character Processing
 - Iterate each character in the (potentially group-modified) string
 - Build candidates from:
-  - `IdenticalReplacements[char]` (always)
-  - `ApproximateReplacements[char]` (if approximate enabled)
+  - `identicalReplacements[char]` (always)
+  - `approximateReplacements[char]` (if approximate enabled)
 - If candidates exist:
   - 60% chance: append random candidate to result
   - 40% chance: append original character

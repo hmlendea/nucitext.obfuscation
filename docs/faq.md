@@ -69,7 +69,7 @@ Parallel.For(0, 100, _ => local.Value.Obfuscate("test"));
 
 | Mode | Tables Used | Visual Fidelity | Strength |
 |------|-------------|-----------------|----------|
-| Identical (default) | IdenticalGroup + IdenticalReplacements | High | Lower |
+| Identical (default) | identicalGroup + identicalReplacements | High | Lower |
 | Approximate | All four tables | Variable | Higher |
 
 Approximate mode uses Cherokee, Cyrillic, Greek, and other scripts for more variation.

@@ -9,8 +9,8 @@ nucitext.obfuscation/
 │       ├── dotnet.yml           # CI build and test
 │       └── nuget-release.yml    # NuGet package publishing on release
 ├── NuciText.Obfuscation/        # Main library project
-│   ├── INuciText.Obfuscation.cs # Public interface
-│   ├── NuciText.Obfuscation.cs  # Core implementation
+│   ├── INuciTextObfuscator.cs   # Public interface
+│   ├── NuciTextObfuscator.cs    # Core implementation
 │   ├── NuciTextObfuscatorOptions.cs # Configuration options
 │   ├── NuciText.Obfuscation.csproj
 │   ├── bin/                     # Build output (gitignored)
@@ -25,7 +25,7 @@ nucitext.obfuscation/
 ├── CODE_OF_CONDUCT.md           # Code of conduct
 ├── CONTRIBUTING.md              # Contribution guidelines
 ├── LICENSE                      # GPL-3.0-or-later license
-├── NuciText.Obfuscation.sln     # Solution file
+├── NuciText.Obfuscation.slnx    # Solution file
 ├── PRIVACY.md                   # Privacy policy
 ├── README.md                    # Project README
 ├── SECURITY.md                  # Security policy
@@ -39,8 +39,8 @@ nucitext.obfuscation/
 
 | File | Purpose |
 |------|---------|
-| `INuciText.Obfuscation.cs` | Public interface `INuciTextObfuscator` |
-| `NuciText.Obfuscation.cs` | Implementation `NuciTextObfuscator` with mapping tables |
+| `INuciTextObfuscator.cs` | Public interface `INuciTextObfuscator` |
+| `NuciTextObfuscator.cs` | Implementation `NuciTextObfuscator` with mapping tables |
 | `NuciTextObfuscatorOptions.cs` | Configuration class `NuciTextObfuscatorOptions` |
 
 **Project Configuration:**
@@ -118,7 +118,7 @@ docs/
 
 - Projects: PascalCase (`NuciText.Obfuscation`)
 - Namespaces: PascalCase matching project (`NuciText.Obfuscation`)
-- Files: PascalCase matching type (`NuciText.Obfuscation.cs`)
+- Files: PascalCase matching type (`NuciTextObfuscator.cs`)
 - Interfaces: `I` prefix (`INuciTextObfuscator`)
 - Implementation: Same name without `I` (`NuciTextObfuscator`)
 - Tests: Subject + `Tests` (`NuciTextObfuscatorTests`)
