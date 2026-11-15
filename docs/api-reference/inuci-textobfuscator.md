@@ -17,9 +17,9 @@ Public contract for text obfuscation and deobfuscation operations.
 ```csharp
 public interface INuciTextObfuscator
 {
-    string Deobfuscate(string text);
-    string Obfuscate(string text);
-    string Obfuscate(string text, NuciTextObfuscatorOptions options);
+    string? Deobfuscate(string? text);
+    string? Obfuscate(string? text);
+    string? Obfuscate(string? text, NuciTextObfuscatorOptions options);
 }
 ```
 
@@ -32,7 +32,7 @@ Reverses obfuscation for known Unicode mappings.
 #### Signature
 
 ```csharp
-string Deobfuscate(string text);
+string? Deobfuscate(string? text);
 ```
 
 #### Parameters
@@ -57,10 +57,10 @@ string Deobfuscate(string text);
 
 #### Mapping Tables Used
 
-- `IdenticalGroupReplacements` (reverse)
-- `ApproximateGroupReplacements` (reverse)
-- `IdenticalReplacements` (reverse)
-- `ApproximateReplacements` (reverse)
+- `identicalGroupReplacements` (reverse)
+- `approximateGroupReplacements` (reverse)
+- `identicalReplacements` (reverse)
+- `approximateReplacements` (reverse)
 
 #### Example
 
@@ -80,7 +80,7 @@ Obfuscates text using default options (identical replacements only).
 #### Signature
 
 ```csharp
-string Obfuscate(string text);
+string? Obfuscate(string? text);
 ```
 
 #### Parameters
@@ -105,8 +105,8 @@ string Obfuscate(string text);
 
 #### Mapping Tables Used
 
-- `IdenticalGroupReplacements`
-- `IdenticalReplacements`
+- `identicalGroupReplacements`
+- `identicalReplacements`
 
 #### Example
 
@@ -125,7 +125,7 @@ Obfuscates text using custom options.
 #### Signature
 
 ```csharp
-string Obfuscate(string text, NuciTextObfuscatorOptions options);
+string? Obfuscate(string? text, NuciTextObfuscatorOptions options);
 ```
 
 #### Parameters
@@ -153,7 +153,7 @@ string Obfuscate(string text, NuciTextObfuscatorOptions options);
 
 | Option | Tables Used |
 |--------|-------------|
-| `UseApproximateReplacements = false` | IdenticalGroupReplacements, IdenticalReplacements |
+| `UseApproximateReplacements = false` | identicalGroupReplacements, identicalReplacements |
 | `UseApproximateReplacements = true` | All four tables |
 
 #### Example

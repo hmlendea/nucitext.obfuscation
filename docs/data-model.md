@@ -33,15 +33,15 @@ public sealed class NuciTextObfuscator : INuciTextObfuscator
 ```csharp
 public class NuciTextObfuscatorOptions
 {
-    public bool UseApproximateReplacements { get; set; } = false;
+    public bool UseApproximateReplacements { get; set; }
 }
 ```
 
 ## Mapping Tables (Internal)
 
-All tables are `static readonly Dictionary<string, string[]>` in `NuciTextObfuscator`.
+All tables are `static readonly Dictionary` in `NuciTextObfuscator`.
 
-### IdenticalGroupReplacements
+### identicalGroupReplacements
 
 Multi-character sequences replaced with identical-looking alternatives.
 
@@ -72,7 +72,7 @@ Multi-character sequences replaced with identical-looking alternatives.
 
 **Total:** ~40 entries
 
-### ApproximateGroupReplacements
+### approximateGroupReplacements
 
 Multi-character sequences replaced with visually similar alternatives.
 
@@ -103,7 +103,7 @@ Multi-character sequences replaced with visually similar alternatives.
 
 **Total:** ~40 entries (same keys, different values)
 
-### IdenticalReplacements
+### identicalReplacements
 
 Single characters replaced with identical-looking alternatives.
 
@@ -142,7 +142,7 @@ Single characters replaced with identical-looking alternatives.
 
 **Total:** ~30 entries (letters + digits)
 
-### ApproximateReplacements
+### approximateReplacements
 
 Single characters replaced with visually similar alternatives.
 

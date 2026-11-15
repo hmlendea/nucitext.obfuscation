@@ -71,10 +71,10 @@ flowchart TD
 
 No persistent state. All transformations use static readonly mapping tables:
 
-- `IdenticalGroupReplacements` — Multi-character exact substitutions
-- `ApproximateGroupReplacements` — Multi-character approximate substitutions
-- `IdenticalReplacements` — Single-character exact substitutions
-- `ApproximateReplacements` — Single-character approximate substitutions
+- `identicalGroupReplacements` — Multi-character exact substitutions
+- `approximateGroupReplacements` — Multi-character approximate substitutions
+- `identicalReplacements` — Single-character exact substitutions
+- `approximateReplacements` — Single-character approximate substitutions
 
 ## Dependency Direction
 

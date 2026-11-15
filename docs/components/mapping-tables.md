@@ -2,22 +2,22 @@
 
 ## Overview
 
-Four `static readonly Dictionary<string, string[]>` tables in `NuciTextObfuscator` containing Unicode homoglyph mappings.
+Four `static readonly Dictionary` tables in `NuciTextObfuscator` containing Unicode homoglyph mappings.
 
 ## Table Structure
 
 ```csharp
-private static readonly Dictionary<string, string[]> IdenticalGroupReplacements;
-private static readonly Dictionary<string, string[]> ApproximateGroupReplacements;
-private static readonly Dictionary<string, string[]> IdenticalReplacements;
-private static readonly Dictionary<string, string[]> ApproximateReplacements;
+private static readonly Dictionary<string, string> identicalGroupReplacements;
+private static readonly Dictionary<string, string> approximateGroupReplacements;
+private static readonly Dictionary<string, string> identicalReplacements;
+private static readonly Dictionary<string, string> approximateReplacements;
 ```
 
 - **Key:** Original string (1-3 characters for groups, 1 character for singles)
-- **Value:** Array of replacement candidates (each used with equal probability)
+- **Value:** Candidate replacement string (each character used with equal probability)
 - **Initialization:** At type load, immutable thereafter
 
-## IdenticalGroupReplacements
+## identicalGroupReplacements
 
 Multi-character sequences with visually identical replacements. Used by default.
 
@@ -48,7 +48,7 @@ Multi-character sequences with visually identical replacements. Used by default.
 
 **Total:** ~40 entries
 
-## ApproximateGroupReplacements
+## approximateGroupReplacements
 
 Multi-character sequences with visually similar replacements. Used when `UseApproximateReplacements = true`.
 
@@ -79,7 +79,7 @@ Multi-character sequences with visually similar replacements. Used when `UseAppr
 
 **Total:** ~40 entries (same keys, different values)
 
-## IdenticalReplacements
+## identicalReplacements
 
 Single characters with visually identical replacements. Used by default.
 
@@ -109,7 +109,7 @@ Single characters with visually identical replacements. Used by default.
 
 **Total:** ~30 entries
 
-## ApproximateReplacements
+## approximateReplacements
 
 Single characters with visually similar replacements. Used when `UseApproximateReplacements = true`.
 
@@ -148,10 +148,10 @@ private static Dictionary<string, string> GetReverseMap()
 
 | Table | Entries | Total Replacements |
 |-------|---------|-------------------|
-| IdenticalGroupReplacements | ~40 | ~80 |
-| ApproximateGroupReplacements | ~40 | ~80 |
-| IdenticalReplacements | ~30 | ~90 |
-| ApproximateReplacements | ~60 | ~180 |
+| identicalGroupReplacements | ~40 | ~80 |
+| approximateGroupReplacements | ~40 | ~80 |
+| identicalReplacements | ~30 | ~90 |
+| approximateReplacements | ~60 | ~180 |
 | **Total** | **~170** | **~430** |
 
 ## Related Documents

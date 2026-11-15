@@ -20,7 +20,7 @@ string obfuscated = obfuscator.Obfuscate("Test string!", options);
 
 ## Behaviour
 
-- Enables `ApproximateGroupReplacements` and `ApproximateReplacements`
+- Enables `approximateGroupReplacements` and `approximateReplacements`
 - Additional ~60% chance per mappable character/group
 - More visual variation, potentially less readable in some fonts
 - Includes mappings from diverse scripts (Cherokee, Lisu, Vai, Tifinagh, etc.)
@@ -29,8 +29,8 @@ string obfuscated = obfuscator.Obfuscate("Test string!", options);
 
 | Table | Entries | Example |
 |-------|---------|---------|
-| `ApproximateGroupReplacements` | 40+ | `II` → `Ⅱ`, `ae` → `æӕ` |
-| `ApproximateReplacements` | 60+ | `A` → `ᗅᎪ`, `6` → `бᏮ` |
+| `approximateGroupReplacements` | 40+ | `II` → `II`, `ae` → `æӕ` |
+| `approximateReplacements` | 60+ | `A` → `ᗅᎪ`, `6` → `бᏮ` |
 
 ## Example Output
 

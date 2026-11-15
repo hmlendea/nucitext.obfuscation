@@ -7,7 +7,7 @@ End-to-end flow for the `Deobfuscate` operation.
 ## Entry Point
 
 ```csharp
-public string Deobfuscate(string text)
+public string? Deobfuscate(string? text)
 ```
 
 ## Flow Diagram
@@ -18,7 +18,7 @@ flowchart TD
     NullCheck -->|Yes| ReturnNull[Return null]
     NullCheck -->|No| EmptyCheck{text == ""?}
     EmptyCheck -->|Yes| ReturnEmpty[Return ""]
-    EmptyCheck -->|No| IdenticalGroupLoop[For each IdenticalGroupReplacements]
+    EmptyCheck -->|No| IdenticalGroupLoop[For each identicalGroupReplacements]
     IdenticalGroupLoop --> GroupCandidates[Get candidate chars from value]
     GroupCandidates --> CandidateLoop[For each candidate char]
     CandidateLoop --> ReplaceAll[Replace all occurrences with key]
@@ -28,7 +28,7 @@ flowchart TD
     MoreCandidates -->|No| NextGroup[Next group]
     NextGroup --> MoreGroups{More groups?}
     MoreGroups -->|Yes| IdenticalGroupLoop
-    MoreGroups -->|No| ApproxGroupLoop[For each ApproximateGroupReplacements]
+    MoreGroups -->|No| ApproxGroupLoop[For each approximateGroupReplacements]
     ApproxGroupLoop --> ApproxGroupCandidates[Get candidate chars from value]
     ApproxGroupCandidates --> ApproxCandidateLoop[For each candidate char]
     ApproxCandidateLoop --> ApproxReplaceAll[Replace all occurrences with key]
@@ -39,9 +39,9 @@ flowchart TD
     ApproxNextGroup --> MoreApproxGroups{More groups?}
     MoreApproxGroups -->|Yes| ApproxGroupLoop
     MoreApproxGroups -->|No| CharLoop[For each character in text]
-    CharLoop --> IdenticalCharCheck{Char in any IdenticalReplacements value?}
+    CharLoop --> IdenticalCharCheck{Char in any identicalReplacements value?}
     IdenticalCharCheck -->|Yes| IdenticalReverse[Find key, append to builder]
-    IdenticalCharCheck -->|No| ApproxCharCheck{Char in any ApproximateReplacements value?}
+    IdenticalCharCheck -->|No| ApproxCharCheck{Char in any approximateReplacements value?}
     ApproxCharCheck -->|Yes| ApproxReverse[Find key, append to builder]
     ApproxCharCheck -->|No| CharAppend[Append original char]
     IdenticalReverse --> CharNext[Next character]
@@ -60,23 +60,23 @@ flowchart TD
 - Empty string → return empty string
 
 ### 2. Group Replacements Reverse (Identical)
-- Iterate `IdenticalGroupReplacements` dictionary
+- Iterate `identicalGroupReplacements` dictionary
 - For each entry (key = original group, value = candidate string):
   - For each character in the value string:
     - Replace all occurrences of that character in input with the key
 - Example: `ᕯ` → `**`, ` ` → ` `, ` ` → ` `, etc.
 
 ### 3. Group Replacements Reverse (Approximate)
-- Iterate `ApproximateGroupReplacements` dictionary
+- Iterate `approximateGroupReplacements` dictionary
 - Same logic: each candidate character → replace with original group key
 - Example: `Ⅱ` → `II`, `Ⅲ` → `III`, `Ǳ` → `DZ`, etc.
 
 ### 4. Character-by-Character Reverse Lookup
 - Iterate each character in the (group-reversed) string
 - For each character:
-  - Search `IdenticalReplacements` values for a match
+  - Search `identicalReplacements` values for a match
   - If found: append the corresponding key to result
-  - Else: search `ApproximateReplacements` values for a match
+  - Else: search `approximateReplacements` values for a match
   - If found: append the corresponding key to result
   - Else: append original character
 - Uses `StringBuilder` for efficient construction

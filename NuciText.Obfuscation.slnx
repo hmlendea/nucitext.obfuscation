@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="NuciText.Obfuscation/NuciText.Obfuscation.csproj" />
+  <Project Path="NuciText.Obfuscation.ArchitectureTests/NuciText.Obfuscation.ArchitectureTests.csproj" />
+  <Project Path="NuciText.Obfuscation.UnitTests/NuciText.Obfuscation.UnitTests.csproj" />
+</Solution>

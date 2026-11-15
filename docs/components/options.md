@@ -24,14 +24,14 @@ public sealed class NuciTextObfuscatorOptions
 
 ### UseApproximateReplacements = false (Default)
 
-- Only `IdenticalGroupReplacements` and `IdenticalReplacements` are used
+- Only `identicalGroupReplacements` and `identicalReplacements` are used
 - Substitutions are visually identical or near-identical
 - Lower obfuscation strength, higher readability preservation
 
 ### UseApproximateReplacements = true
 
 - Both identical and approximate tables are used
-- `ApproximateGroupReplacements` and `ApproximateReplacements` included
+- `approximateGroupReplacements` and `approximateReplacements` included
 - Higher obfuscation strength, more visual variation
 - Some substitutions may be less visually similar
 

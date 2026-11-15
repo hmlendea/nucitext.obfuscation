@@ -10,14 +10,14 @@ namespace NuciText.Obfuscation
         /// </summary>
         /// <param name="text">The text to deobfuscate.</param>
         /// <returns>The deobfuscated text.</returns>
-        string Deobfuscate(string text);
+        string? Deobfuscate(string? text);
 
         /// <summary>
         /// Obfuscates the specified text.
         /// </summary>
         /// <param name="text">The text to obfuscate.</param>
         /// <returns>The obfuscated text.</returns>
-        string Obfuscate(string text);
+        string? Obfuscate(string? text);
 
         /// <summary>
         /// Obfuscates the specified text using the provided options.
@@ -25,6 +25,6 @@ namespace NuciText.Obfuscation
         /// <param name="text">The text to obfuscate.</param>
         /// <param name="options">The options to use for obfuscation.</param>
         /// <returns>The obfuscated text.</returns>
-        string Obfuscate(string text, NuciTextObfuscatorOptions options);
+        string? Obfuscate(string? text, NuciTextObfuscatorOptions options);
     }
 }

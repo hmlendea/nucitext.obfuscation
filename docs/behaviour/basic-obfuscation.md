@@ -17,7 +17,7 @@ string restored = obfuscator.Deobfuscate(obfuscated);
 
 ## Behaviour
 
-- Uses `IdenticalReplacements` and `IdenticalGroupReplacements` only
+- Uses `identicalReplacements` and `identicalGroupReplacements` only
 - Probabilistic: ~60% of mappable characters/groups are replaced
 - Non-deterministic by default (uses `Environment.TickCount` seed)
 - Visually similar output, readable in most fonts

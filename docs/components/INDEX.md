@@ -26,10 +26,10 @@ NuciTextObfuscator (class)
     ├── uses ──► NuciTextObfuscatorOptions
     │
     └── uses ──► Mapping Tables (static)
-        ├── IdenticalGroupReplacements
-        ├── ApproximateGroupReplacements
-        ├── IdenticalReplacements
-        └── ApproximateReplacements
+        ├── identicalGroupReplacements
+        ├── approximateGroupReplacements
+        ├── identicalReplacements
+        └── approximateReplacements
 ```
 
 ## Quick Reference
@@ -53,13 +53,13 @@ string? Deobfuscate(string? input)
 ```csharp
 public class NuciTextObfuscatorOptions
 {
-    public bool UseApproximateReplacements { get; set; } = false;
+    public bool UseApproximateReplacements { get; set; }
 }
 ```
 
 ### Mapping Tables
 
-Four `static readonly Dictionary<string, string[]>` tables with ~180 total entries covering:
+Four `static readonly Dictionary` tables with ~180 total entries covering:
 - Latin letters (A-Z, a-z)
 - Digits (0-9)
 - Ligatures (ff, fi, fl, ffi, ffl, st, æ, œ, ij)
